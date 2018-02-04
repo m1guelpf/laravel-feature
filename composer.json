@@ -1,0 +1,57 @@
+{
+    "name": "m1guelpf/laravel-feature",
+    "description": "Disable and enable features in your application using Laravel Feature.",
+    "keywords": [
+        "m1guelpf",
+        "laravel-feature"
+    ],
+    "homepage": "https://github.com/m1guelpf/laravel-feature",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Miguel Piedrafita",
+            "email": "soy@miguelpiedrafita.com",
+            "homepage": "https://miguelpiedrafita.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.5.*"
+    },
+    "require-dev": {
+        "larapack/dd": "^1.0",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "M1guelpf\\Feature\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "M1guelpf\\Feature\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "M1guelpf\\Feature\\FeatureServiceProvider"
+            ],
+            "aliases": {
+                "Feature": "M1guelpf\\Feature\\FeatureFacade"
+            }
+        }
+    }
+}
