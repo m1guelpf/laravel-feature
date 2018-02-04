@@ -23,11 +23,11 @@ class FeatureTest extends TestCase
     public function you_can_use_closures()
     {
         $featureManager = new FeatureManager([
-            'feature1' => true,
-            'feature2' => false,
+            'feature1' => function () {
+                return true;
+            },
         ]);
 
         $this->assertTrue($featureManager->enabled('feature1'));
-        $this->assertFalse($featureManager->enabled('feature2'));
     }
 }
