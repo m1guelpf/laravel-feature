@@ -9,11 +9,11 @@ class FeatureServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      *
-     * @param Feature $feature
+     * @param FeatureManager $feature
      *
      * @return void
      */
-    public function boot(Feature $feature)
+    public function boot(FeatureManager $feature)
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
