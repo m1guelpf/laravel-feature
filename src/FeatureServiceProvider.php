@@ -42,7 +42,7 @@ class FeatureServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/features.php', 'feature');
         
         $this->app->singleton('feature', function ($app) {
-            return new FeatureManager(config('features'));
+            return new FeatureManager(config('features') ?? []);
         });
 
         $this->app->alias('feature', FeatureManager::class);
