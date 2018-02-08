@@ -59,12 +59,10 @@ class FeatureManager
      *
      * @param bool $value Value to set the master switch to
      *
-     * @return self
+     * @return void
      */
     public static function setMasterSwitch(bool $value)
     {
         static::$masterSwitch = $value;
-
-        return $this;
     }
 }
