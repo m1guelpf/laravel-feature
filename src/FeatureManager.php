@@ -4,6 +4,9 @@ namespace M1guelpf\Feature;
 
 class FeatureManager
 {
+    /** @var bool|null */
+    protected static $masterSwitch = null;
+
     /**
      * Create a new FeatureManager Instance.
      *
@@ -26,6 +29,10 @@ class FeatureManager
      */
     public function enabled(string $name, string $function = '') : bool
     {
+        if (! is_null(static::$masterSwitch)) {
+            return static::$masterSwitch;
+        }
+
         $feature = $this->feature($name);
 
         if (! empty(trim($function))) {
@@ -45,5 +52,19 @@ class FeatureManager
     public function feature(string $name)
     {
         return array_get($this->features, $name, false);
+    }
+
+    /**
+     * Set the master switch.
+     *
+     * @param bool $value Value to set the master switch to
+     *
+     * @return self
+     */
+    public static function setMasterSwitch(bool $value)
+    {
+        static::$masterSwitch = $value;
+
+        return $this;
     }
 }
