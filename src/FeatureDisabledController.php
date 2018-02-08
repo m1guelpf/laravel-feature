@@ -4,7 +4,7 @@ namespace M1guelpf\Feature;
 
 use Illuminate\Routing\Controller;
 
-class NotFoundController extends Controller
+class FeatureDisabledController extends Controller
 {
     public function __invoke(...$args)
     {
