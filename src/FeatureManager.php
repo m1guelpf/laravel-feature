@@ -32,6 +32,10 @@ class FeatureManager
         if (! is_null(static::$masterSwitch)) {
             return static::$masterSwitch;
         }
+        
+        if ($this->runningTests()) {
+            return true;
+        }
 
         $feature = $this->feature($name);
 
@@ -64,5 +68,15 @@ class FeatureManager
     public static function setMasterSwitch(bool $value)
     {
         static::$masterSwitch = $value;
+    }
+    
+    /**
+     * Check if the current app instance is running unit tests.
+     *
+     * @return bool
+     */
+    public function runningTests()
+    {
+        return function_exists('app') && method_exists($app = app(), 'runningUnitTests') && $app->runningUnitTests();
     }
 }
