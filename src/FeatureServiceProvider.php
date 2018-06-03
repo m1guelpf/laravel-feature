@@ -24,6 +24,7 @@ class FeatureServiceProvider extends ServiceProvider
         if (class_exists(\Illuminate\Routing\Route::class)) {
             \Illuminate\Routing\Route::macro('feature', function (string $name, string $function = '') use ($feature) {
                 feature($name, empty(trim($function)) ? 'routes' : "routes.$function") ? null : $this->uses('\M1guelpf\Feature\FeatureDisabledController');
+
                 return $this;
             });
         }
@@ -41,7 +42,7 @@ class FeatureServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/features.php', 'feature');
-        
+
         $this->app->singleton('feature', function ($app) {
             return new FeatureManager(config('features') ?? []);
         });
